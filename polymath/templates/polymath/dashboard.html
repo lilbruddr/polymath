@@ -22,7 +22,7 @@
       <header class="mdl-layout__header">
         <div class="mdl-layout__header-row mdl-layout--fixed-header">
           <div class="mdl-layout-spacer"><a class="mdl-layout-title" style="color:white; text-decoration:none" href="dashboard.html">PolyMath</a></div>
-          <div class="mdl-layout-spacer"><a class="mdl-layout-title truncate" style="color:white">Welcome, Josiah</a></div>
+          <div class="mdl-layout-spacer"><a class="mdl-layout-title truncate" style="color:white">Welcome, {{user.first_name}}</a></div>
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
                       mdl-textfield--floating-label mdl-textfield--align-right">
             <label class="mdl-button mdl-js-button mdl-button--icon"
@@ -42,7 +42,7 @@
 
             <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
                 for="nav-menu-lower-right">
-              <li disabled class="mdl-menu__item" style="color:black">Josiah Hartley</li>
+              <li disabled class="mdl-menu__item" style="color:black">{{user.first_name}} {{user.last_name}}</li>
               <li class="mdl-menu__item">View Account</li>
               <li class="mdl-menu__item">Settings</li>
               <li class="mdl-menu__item">Log Out</li>
@@ -330,7 +330,27 @@
           </div>
         </section>
         <section class="mdl-layout__tab-panel" id="fixed-tab-2">
-          <div class="page-content">This is the active Assignments tab.  There will be a calendar showing due dates, as well as in-progress assignments.  For instructors, this will show the due dates for the assignments they've given out.</div>
+          <div class="page-content">This is the active Assignments tab.  There will be a calendar showing due dates, as well as in-progress assignments.  For instructors, this will show the due dates for the assignments they've given out.
+            <div style="text-align: center; font-family:'Open Sans'">
+
+              <style>
+                table, th, td {
+                    border: 1px solid black;
+                }
+              </style>
+
+              <table align="center">
+                {% for week in month %}
+                  <tr>
+                    {% for day in week %}
+                      <td>{% if day != 0 %}{{ day }}{% endif %}</td>
+                    {% endfor %}
+                  </tr>
+                {% endfor %}
+              </table>
+            </div>
+
+          </div>
         </section>
         <section class="mdl-layout__tab-panel" id="fixed-tab-3">
           <div class="page-content">This is the Grades tab, with grades broken down by course, and more detail within each course (grades by section, type of assignment, etc.).</div>
