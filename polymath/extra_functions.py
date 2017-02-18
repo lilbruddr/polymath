@@ -2,11 +2,14 @@
 import datetime
 from calendar import monthrange
 
-def calendar():
-    today = datetime.date.today()
-    this_month = today.month
-    this_year = today.year
-    this_day = today.day
+def calendar(given_day=datetime.date.today()):
+    """Generate a calendar for the month containing the given date.
+
+    Returns a matrix with 0s for missing days.
+    """
+    this_month = given_day.month
+    this_year = given_day.year
+    this_day = given_day.day
 
     if this_month == 1 or this_month == 2:
         this_month += 12
@@ -19,8 +22,8 @@ def calendar():
     
     first_day_of_month = sum % 7
     
-    this_month = today.month
-    this_year = today.year
+    this_month = given_day.month
+    this_year = given_day.year
 
     num_days = max(monthrange(this_year,this_month))
     num_weeks = ((num_days + first_day_of_month) // 7) + 1

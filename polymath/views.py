@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 #from django.template import loader
-import polymath.calendar_gen as cal
+from polymath.extra_functions import calendar
+import datetime
 
 def index(request):
     return HttpResponse("Hello, world.  You're at the polls index.")
@@ -12,10 +13,14 @@ class Student():
         self.last_name = "Hartley"    
 
 def dashboard(request):
+    #highlighted_day = datetime.date(2017,6,13)
+    highlighted_day = datetime.date.today()
     user = Student()
-    month = cal.calendar()
+    month = calendar(highlighted_day)
     context = {
         'user': user,
-        'month': month
+        'month': month,
+        'header_month': highlighted_day.strftime('%B %Y'),
+        'bold_day': highlighted_day.day,
     }
     return render(request, 'polymath/dashboard.html', context)

@@ -337,13 +337,35 @@
                 table, th, td {
                     border: 1px solid black;
                 }
+                td {
+                  width: 10%;
+                  height:40px;
+                }
               </style>
 
               <table align="center">
+                <tr>{{header_month}}</tr>
+                <tr>
+                  <th>Sunday</th>
+                  <th>Monday</th>
+                  <th>Tuesday</th>
+                  <th>Wednesday</th>
+                  <th>Thursday</th>
+                  <th>Friday</th>
+                  <th>Saturday</th>
+                </tr>
                 {% for week in month %}
                   <tr>
                     {% for day in week %}
-                      <td>{% if day != 0 %}{{ day }}{% endif %}</td>
+                      <td>{% if day != 0 %}
+                            {% if day == bold_day %}
+                            <strong>
+                            {% endif %}
+                            {{ day }}
+                            {% if day == bold_day %}
+                            </strong>
+                            {% endif %}
+                          {% endif %}</td>
                     {% endfor %}
                   </tr>
                 {% endfor %}
