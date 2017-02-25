@@ -11,6 +11,97 @@ html {
     color: rgba(0, 0, 0, .87)
 }
 
+table.cal_table, th.cal_header, td.cal_cell {
+                    border: 1px solid rgba(0,0,0,0.2);
+                    border-radius: 2px;
+                    font-family: "Open Sans";
+                    font-weight: 100;
+                }
+                /*td {
+                  width: 10%;
+                  height:40px;
+                }*/
+                table.cal_table {
+                  box-shadow: 2px 5px 10px 2px rgba(0,0,0,0.14);
+                  border-collapse: collapse;
+                  width: 90%;
+                }
+                td.cal_cell {
+                  width: 12%;
+                  position: relative;
+                }
+                td.cal_cell:after {
+                  content: '';
+                  display: block;
+                  margin-top: 100%;
+                }
+                td.cal_cell .cal_date {
+                  position: absolute;
+                  top: 0;
+                  bottom: 0;
+                  left: 0;
+                  right: 0;
+                  background: rgba(0,0,0,0.05);
+                }
+                td.cal_cell .today {
+                  background: rgba(0,0,0,0.15);
+                  font-size: 150%;
+                }
+                .show-small {
+                      font-size: 60%;
+                }
+                @media screen and (min-width:760px) {
+                    .show-small {
+                        display: none!important;
+                    }
+                }
+                @media screen and (max-width:759px) {
+                    .show-large {
+                        display: none!important;
+                    }
+                }
+                .date_num {
+                    text-align:right; 
+                    padding:10px;
+                    font-weight: 600;
+                }
+                .agenda {
+                    position: absolute;
+                    width: 90%;
+                    height: 40%;
+                    text-align: left;
+                    padding: 10px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: normal;
+                }
+                .cal_link {
+                      width: 100%;
+                      height: 100%;
+                      color: #000;
+                }
+                td.cal_cell:hover {
+                      background-color: rgba(0,0,0,0.25);
+                }
+                  
+                  th.month-display {
+                      padding:10px; 
+                      background-color: #004D40; 
+                      color: #fff;
+                  }
+                  
+                  a.prev-month {
+                      padding-right: 20px; 
+                      vertical-align: middle; 
+                      text-decoration: none;
+                  }
+                  
+                  a.next-month {
+                      padding-left: 20px; 
+                      vertical-align: middle; 
+                      text-decoration: none;
+                  }
+
 .course-block-wrapper {
     display: inline-block;
     padding-bottom: 40px;
