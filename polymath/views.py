@@ -27,3 +27,22 @@ def dashboard(request):
         'grade_plot': grades,
     }
     return render(request, 'polymath/dashboard.html', context)
+
+def assignment(request):
+    context = {
+        'course': "MA 103",
+        'assignment': "Homework 3.4",
+        'number_of_problems': range(1,7),
+        'problem_number': 23,
+        'problem_text': "Evaluate the following integral. \[\int e^{3x}\ dx\]",
+    }
+    return render(request, 'polymath/assignment.html', context)
+
+def submit_answer(request):
+    if request.method == 'POST':
+        if 'answer' in request.POST:
+            answer = request.POST['answer']
+            # doSomething with pieFact here...
+            return HttpResponse('correct') # if everything is OK
+    # nothing went well
+    return HttpRepsonse('FAIL!!!!!')
